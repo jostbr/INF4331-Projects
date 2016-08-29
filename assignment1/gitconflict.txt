@@ -1,1 +1,1 @@
-Here is a line to be modified separately in two cloned repositories.
+Here is a line to be modified separately in two (mod 2 from secondary cloned repo) cloned repositories.
