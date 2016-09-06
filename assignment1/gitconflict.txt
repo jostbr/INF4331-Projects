@@ -1,1 +1,1 @@
-Here is a line to be modified (mod 1 from OG repo) separately in two cloned repositories.
+Here is a line to be modified (mod 1 from OG repo) separately in two (mod 2 from secondary cloned repo) cloned repositories.
