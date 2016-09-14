@@ -3,6 +3,8 @@ import sys
 import math
 
 class ReversedPolishNotationCalc:
+	"""Class that contains methods for handling a
+	calculator session using reversed polish notation"""
 	def __init__(self, command_line_input = None):
 		"""Constructor function for class that defines attributes (that are mainly used in process_user_input
 		and apply_operator_on_stack functions) and handles the case in which the user passes specifies a cmd
@@ -53,7 +55,7 @@ class ReversedPolishNotationCalc:
 						self.print_error_stack_length(input_element, 2) # Notify that there's too few elements in stack
 						break     # Break out of loop and thus abort paring of user input line at this operator
 
-				# IF input_element is a float requiring operator and not "/".
+				# If input_element is a float requiring operator and not "/".
 				elif (input_element in self.operator_float_req and input_element != "/"):
 					# If length of stack is sufficient for these operators.
 					if (len(self.internal_stack) >= 1):
