@@ -10,7 +10,7 @@ class ReversedPolishNotationCalc:
 
 		Args:
 			command_line_input (str): Command line string by user to be parsed.
-        """
+		"""
 		self.internal_stack = []                                    # Internal stack to hold user input
 		self.operator_int_OK = ["+", "-", "*"]                      # Operators where ints are okey.
 		self.operator_float_req = ["/", "v", "sin", "cos"]          # Operators where numbers need be float
