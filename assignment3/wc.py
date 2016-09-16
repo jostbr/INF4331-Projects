@@ -15,15 +15,18 @@ def file_statistics(list_of_filenames):
         num_chars_total = 0     # To store number of chars in all files combined
 
         for filename in list_of_filenames:
+            num_lines_in_file = 0       # To store number of lines in current file
             num_words_in_file = 0       # To store number of words in current file
             num_chars_in_file = 0       # To store number of characters in current file
 
             with open(filename, "r") as current_file:
                 for line_num, current_line in enumerate(current_file):
+                    if ("\n" in current_line):
+                        num_lines_in_file += 1      # Exercise defined num of lines as num of new line chars.
+                    
                     num_words_in_file += len(current_line.split())      # Add num words in current_line
                     num_chars_in_file += len(current_line)              # Add num chars in current_line
 
-            num_lines_in_file = line_num    # The iterator starts ends at the number of new-line chars
             print("{:9} {:9} {:9}       {}".format(num_lines_in_file, num_words_in_file, num_chars_in_file, filename))
 
             num_lines_total += num_lines_in_file    # Add to total line count

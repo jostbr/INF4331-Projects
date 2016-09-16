@@ -1,3 +1,5 @@
+"""Module That contanis class UnitTest (which again contains its own methods) for
+performing a simple test on a function to check if the function behaves as expected."""
 
 class UnitTest(object):
     """Class that executes testing of a function func which takes arguments
@@ -25,18 +27,17 @@ class UnitTest(object):
         self.res = res
 
     def __call__(self):
-        """Call function (run when instance is called) that executes test; it tries to call func
-        with the arguments provided in *self.args and **self.kwargs and produce the exected result
-        self.res. If the expected result is produced successfuly, the function returns True, and
-        if an exception is thrown (using Exception (almost top of exception hierarchy) to handle
+        """Call function (run when instance is called) that executes the test; it tries to call func
+        with the arguments provided in *self.args and **self.kwargs and produce the expected result
+        self.res. If the expected result is produced successfuly, the function returns True. Also if
+        the try-section executes successfully, but test_passed = False, __call__ will return False.
+        And if an exception is thrown (using Exception (almost top of exception hierarchy) to handle
         all types of errors) the function returns False and we know this particular test failed."""
         try:
-            self.func(*self.args, **self.kwargs) == self.res
+            test_passed = self.func(*self.args, **self.kwargs) == self.res
 
         except Exception:
             return False
         
         else:
-            return True
-
-
+            return test_passed
