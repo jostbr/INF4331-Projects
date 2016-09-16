@@ -1,0 +1,16 @@
+
+After running addition_testing.py we get "2/3 tests passed". The test that is failing
+is the one where addition_testing.py creates an instance of UnitTest, with the values
+a = 4, b = 7, n = 0, r = 11, and then calls the __call__ method of the instance. In
+the__call__ method, my_unit_testing.py calls better_addtition and since num_rechecks = 0
+in this call, we have len(sum_computations) = 0. Furthermore the for-loop is skipped
+(because there's no values to loop over) and the program execution arrives at the return
+statement (line 12 in addition_testing.py) where it tries to return the first element in
+sum_computations. But since the length is zero, this element doesn't exist and we hence
+get an IndexError. So better_addition is not written correctly for the case where user
+calls it with num_rechecks = 0. One possible solution could for exapmle be to exhange
+line 5 in addition_testing.py with something like
+
+sum_computations = [a + b] + [a + b for n in range(num_rechecks)]
+
+to have non-zero length of sum_computations even if user specifies num_rechecks = 0.

@@ -3,8 +3,8 @@ import sys
 import math
 
 class ReversedPolishNotationCalc:
-	"""Class that contains methods for handling a
-	calculator session using reversed polish notation"""
+	"""Class that contains attributes and methods for handling
+	a calculator session using reversed polish notation"""
 	def __init__(self, command_line_input = None):
 		"""Constructor function for class that defines attributes (that are mainly used in process_user_input
 		and apply_operator_on_stack functions) and handles the case in which the user passes specifies a cmd
@@ -31,11 +31,11 @@ class ReversedPolishNotationCalc:
 
 		Args:
 			input_list (list[str]): List of user input, where each element is one
-			number or operator (or not preferably an invalid command).
+				number or operator (or not preferably an invalid command).
 		"""
 		# If none of the elements in the user input line is an exit command.
 		if (not any(x in input_list for x in self.allowed_exit_cmds)):
-			stack_pre_input_procs = list(self.internal_stack)  # Copy stack before procs input line in case of invalid input
+			stack_pre_input_procs = list(self.internal_stack)  # For safety: Keep copy of stack
 			# Loop over all elements in user input line and process.
 			for input_element in input_list:
 				# If input_element is of type int (must be checked before float).
@@ -87,12 +87,8 @@ class ReversedPolishNotationCalc:
 			self.user_requests_exit = True
 
 	def apply_operator_on_stack(self, operator):
-		"""Function that takes an operator and, depending on the operator,
-		applies an appropriate computation on the elements in the internal stack.
-
-		Args:
-			operator (str): A string which specifies the operation to be applied on stack elements.
-		"""
+		"""Function that takes an operator (str) and, depending on the operator,
+		applies an appropriate computation on the elements in the internal stack."""
 		# If the operator is of type that can handle ints.
 		if (operator in self.operator_int_OK):
 			result = eval(str(self.internal_stack[-2]) + operator + str(self.internal_stack[-1]))  # Execute operation using eval
@@ -126,19 +122,12 @@ class ReversedPolishNotationCalc:
 				self.internal_stack[-1] = math.cos(self.internal_stack[-1])
 	
 	def add_to_stack(self, value_to_be_added):
-		"""Function that adds en element to the end of the stack.
-
-		Args:
-			value_to_be_added (int/float): Element to be added to the stack.
-		"""
+		"""Function that adds en element (int/float) to the end of the stack."""
 		self.internal_stack.append(value_to_be_added)
 
 	def remove_from_stack(self, num_elements):
-		"""Function that removes a requested amount of elements
-		from the stack, starting from the last element.
-		Args:
-			num_elements (int): Number of elements.
-		"""
+		"""Function that removes a requested number of elements
+		from the stack, starting from the last element."""
 		for i in range(-num_elements, 0):
 			del self.internal_stack[i]
 
@@ -155,11 +144,7 @@ class ReversedPolishNotationCalc:
 
 
 def object_is_type_int(test_object):
-	"""Function that test if object is of type int.
-
-	Args:
-		test_object (ANY): Object of any type that is to be checked.
-	"""
+	"""Function that checks if test_object is of type int."""
 	try:
 		temp_var_01 = float(test_object)    # Try creating float from test_object
 		temp_var_02 = int(temp_var_01)      # Try creating int from test_object
@@ -172,11 +157,7 @@ def object_is_type_int(test_object):
 
 def object_is_type_float(test_object):
 	"""Function that test if object is of type float. This must be called after
-	object_is_type_int() to work properly as it will give True for ints as well.
-
-	Args:
-		test_object (ANY): Object of any type that is to be checked.
-	"""
+	object_is_type_int() to work properly as it will give True for ints as well."""
 	try:
 		temp_var = float(test_object)       # Try creating float from test_object
 

@@ -2,10 +2,9 @@
 import sys
 
 def file_statistics(list_of_filenames):
-    """Function that counts the number of lines, words, and characters
-    in all files in list. The function uses the with keyword and a for-loop
-    with the iterator enumerate() to make it memory efficient and avoid
-    storing the entire file simultaneously, but rather only a line at a time.
+    """Function that counts the number of lines, words, and characters in all files in list. The
+    function uses the with keyword and a for-loop with the iterator enumerate() to make it memory
+    efficient and avoid storing the entire file simultaneously, but rather only a line at a time.
 
     Args:
         list_of_filenames (list[str]): List with files to get statistics on.
@@ -24,14 +23,14 @@ def file_statistics(list_of_filenames):
                     num_words_in_file += len(current_line.split())      # Add num words in current_line
                     num_chars_in_file += len(current_line)              # Add num chars in current_line
 
-            num_lines_in_file = line_num + 1    # The iterator starts at index 0 for line 1 so we add 1
+            num_lines_in_file = line_num    # The iterator starts ends at the number of new-line chars
             print("{:9} {:9} {:9}       {}".format(num_lines_in_file, num_words_in_file, num_chars_in_file, filename))
 
             num_lines_total += num_lines_in_file    # Add to total line count
             num_words_total += num_words_in_file    # Add to total word count
             num_chars_total += num_chars_in_file    # Add to total char count
 
-        # Only print "total"-line if more than one file.
+        # Only print "total"-line if more than one file is passed in.
         if (len(list_of_filenames) > 1):
             print("{:9} {:9} {:9}       Total".format(num_lines_total, num_words_total, num_chars_total))
 
@@ -41,4 +40,7 @@ def file_statistics(list_of_filenames):
 
 
 if (__name__ == "__main__"):
+    # The use of sys.argv below is based on the assumption that bash expands
+    # the wildcard notation asked for in the exercise, namely * and *.py.
+    # Here bash fills sys.argv with all the requested files in the directory.
     file_statistics(sys.argv[1:])   # Pass in the list of specified filenames
