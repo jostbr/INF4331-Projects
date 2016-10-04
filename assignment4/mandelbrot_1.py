@@ -2,7 +2,7 @@
 import time
 from matplotlib import pyplot as plt
 
-def mandelbrot_python(x_min, x_max, y_min, y_max, grid_size = 1000, max_escape_iter = 1000):
+def mandelbrot_python(x_min, x_max, y_min, y_max, grid_size = 200, max_escape_iter = 1000):
     image_array = [[[0.0 for i in range(3)] for j in range(grid_size)] for k in range(grid_size)]
     delta_x = (x_max - x_min) / (grid_size - 1.0)
     delta_y = (y_max - y_min) / (grid_size - 1.0)
@@ -19,7 +19,7 @@ def mandelbrot_python(x_min, x_max, y_min, y_max, grid_size = 1000, max_escape_i
 
             image_array[j][i] = get_pixel_RGB(current_iter / max_escape_iter)
 
-    plt.imshow(image_array, interpolation = "gaussian", extent = [x_min, x_max, y_min, y_max])
+    plt.imshow(image_array, extent = [x_min, x_max, y_min, y_max])
     plt.show()
 
 def get_pixel_RGB(norm_iter):
@@ -27,10 +27,10 @@ def get_pixel_RGB(norm_iter):
         return [0.0, 0.0, 0.0]
 
     else:
-        return [0.0, 10 * norm_iter, 0.0]
+        return [8 * norm_iter, 8 * norm_iter, 8 * norm_iter]
 
 if (__name__ == "__main__"):
-    t_0 = time.clock()
+    time_start = time.clock()
     mandelbrot_python(-2.5, 1, -1, 1)
-    t_1 = time.clock()
-    print("Execution took {0:.2f} seconds".format(t_1 - t_0))
+    time_stop = time.clock()
+    print("Execution took {0:.2f} seconds".format(time_stop - time_start))
