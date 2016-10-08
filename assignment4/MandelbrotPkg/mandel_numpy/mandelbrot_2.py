@@ -4,7 +4,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from mandelbrot_1 import visualize_mandelbrot
 
-def mandelbrot_numpy(x_min, x_max, y_min, y_max, width, height, max_escape_iter = 1000):
+def mb_numpy(x_min, x_max, y_min, y_max, width, height, max_escape_iter = 1000):
     """Function that computes the escape times (number of iterations of the sequence f_c(0),f_c(f_c(0)),..., where f_c(z) = z² + c,
     before it encounters an element of the sequence for which the absolute value (modulus) exceeds 2) for all the complex numbers
     in the xy-plane defined by the arguments supplied to the function. This implementation utilises NumPy-arrays and vectorization.
@@ -31,15 +31,14 @@ def mandelbrot_numpy(x_min, x_max, y_min, y_max, width, height, max_escape_iter 
         z[below_limit] = z[below_limit] ** 2 + c[below_limit]      # Keep computing sequence only for points still abs() < 2
         escape_iter_array[below_limit] = current_iter + 1          # Update escape time for all gridpoints with still abs() < 2
 
-    print(escape_iter_array)
     return escape_iter_array    # Return escape time array and exit function
 
 if (__name__ == "__main__"):
     x_min = -2.5; x_max = 1; y_min = -1.0; y_max = 1.0;
-    width = 12; height = 12; max_escape_iter = 1000;
+    width = 200; height = 200; max_escape_iter = 1000;
 
     time_start = time.clock()
-    escape_iter_array = mandelbrot_numpy(x_min, x_max, y_min, y_max, width, height, max_escape_iter)
+    escape_iter_array = mb_numpy(x_min, x_max, y_min, y_max, width, height, max_escape_iter)
     time_stop = time.clock()
     print("Execution took {0:.2f} seconds".format(time_stop - time_start))
 

@@ -2,7 +2,7 @@
 import time
 from matplotlib import pyplot as plt
 
-def mandelbrot_python(x_min, x_max, y_min, y_max, width, height, max_escape_iter = 1000):
+def mb_python(x_min, x_max, y_min, y_max, width, height, max_escape_iter = 1000):
     """Function that computes the escape times (number of iterations of the sequence f_c(0),f_c(f_c(0)),..., where f_c(z) = z² + c,
     before it encounters an element of the sequence for which the absolute value (modulus) exceeds 2) for all the complex numbers
     in the xy-plane defined by the arguments supplied to the function. This implementation uses only basic Python for computation.
@@ -35,8 +35,6 @@ def mandelbrot_python(x_min, x_max, y_min, y_max, width, height, max_escape_iter
 
             escape_iter_array[i][j] = current_iter          # Store escape time for gridpoint (escape time is max_escape_time for points in the M-set)
 
-    for row in escape_iter_array:
-        print(row)
     return escape_iter_array    # Return escape time list and exit function
 
 
@@ -64,17 +62,17 @@ def visualize_mandelbrot(escape_iter_array, x_min, x_max, y_min, y_max, width, h
 
             else:                                               # If current point not inside the M-set
                 norm_iter = escape_iter_array[i][j] / max_escape_iter                   # Normalize escape time to give value in [0, 1]
-                image_array[i][j]  = [60 * norm_iter, 60 * norm_iter, 60 * norm_iter]   # Assign a RGB value to point depending on the escape time
+                image_array[i][j]  = [20 * norm_iter, 20 * norm_iter, 20 * norm_iter]   # Assign a RGB value to point depending on the escape time
 
     plt.imshow(image_array, extent = [x_min, x_max, y_min, y_max])      # Use imshow()-function to display the escape time RGB array
     plt.show()                                                          # Make plot stay on screen
 
 if (__name__ == "__main__"):
     x_min = -2.5; x_max = 1.0; y_min = -1.0; y_max = 1.0
-    width = 12; height = 12; max_escape_iter = 1000
+    width = 1000; height = 1000; max_escape_iter = 1000
 
     time_start = time.clock()
-    escape_iter_array = mandelbrot_python(x_min, x_max, y_min, y_max, width, height, max_escape_iter)
+    escape_iter_array = mb_python(x_min, x_max, y_min, y_max, width, height, max_escape_iter)
     time_stop = time.clock()
     print("Execution took {0:.2f} seconds".format(time_stop - time_start))
 
