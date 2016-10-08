@@ -2,7 +2,7 @@
 import time
 import numpy as np
 from matplotlib import pyplot as plt
-from mandelbrot_1 import visualize_mandelbrot
+from .. import visualize_mandelbrot
 
 def mb_numpy(x_min, x_max, y_min, y_max, width, height, max_escape_iter = 1000):
     """Function that computes the escape times (number of iterations of the sequence f_c(0),f_c(f_c(0)),..., where f_c(z) = z² + c,
@@ -42,4 +42,4 @@ if (__name__ == "__main__"):
     time_stop = time.clock()
     print("Execution took {0:.2f} seconds".format(time_stop - time_start))
 
-    visualize_mandelbrot(escape_iter_array, x_min, x_max, y_min, y_max, width, height, max_escape_iter)
+    visualize_mandelbrot.mb_visualize(escape_iter_array, x_min, x_max, y_min, y_max, width, height, max_escape_iter)
