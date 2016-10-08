@@ -18,4 +18,4 @@ if (__name__ == "__main__"):
     time_stop = time.clock()
     print("Execution took {0:.2f} seconds".format(time_stop - time_start))
 
-    visualize_mandelbrot.mb_visualize(escape_iter_array, x_min, x_max, y_min, y_max, width, height, max_escape_iter)
+    visualize_mandelbrot.visualize_mb(escape_iter_array, x_min, x_max, y_min, y_max, width, height, max_escape_iter)

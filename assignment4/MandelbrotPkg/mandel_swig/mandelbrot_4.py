@@ -19,4 +19,4 @@ if (__name__ == "__main__"):
     print("Execution took {0:.2f} seconds".format(time_stop - time_start))
     escape_iter_array = np.reshape(escape_iter_array, (height, width))
 
-    visualize_mandelbrot.mb_visualize(escape_iter_array, x_min, x_max, y_min, y_max, width, height, max_escape_iter)
+    visualize_mandelbrot.visualize_mb(escape_iter_array, x_min, x_max, y_min, y_max, width, height, max_escape_iter)
