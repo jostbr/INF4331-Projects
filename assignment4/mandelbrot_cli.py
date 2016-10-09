@@ -115,6 +115,8 @@ if (__name__ == "__main__"):
             cli_session.arg_vals["height"], cli_session.arg_vals["max_escape_iter"], cli_session.implementation,
             cli_session.arg_vals["filename"])
 
+        print(escape_iter_array)
+
         vm.visualize_mb(escape_iter_array, cli_session.arg_vals["x_min"], cli_session.arg_vals["x_max"],
             cli_session.arg_vals["y_min"], cli_session.arg_vals["y_max"], cli_session.arg_vals["width"],
             cli_session.arg_vals["height"], cli_session.arg_vals["max_escape_iter"], cli_session.arg_vals["filename"])

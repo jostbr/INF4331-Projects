@@ -6,7 +6,7 @@ import MandelbrotPkg.mandel_swig.mandelbrot_swig as msw
 import MandelbrotPkg.visualize_mandelbrot as vm
 import numpy as np
 
-def compute_mandelbrot(xmin, xmax, ymin, ymax, Nx, Ny, max_escape_time = 1000, impl_type = "cython", plot_filename = None):
+def compute_mandelbrot(xmin, xmax, ymin, ymax, Nx, Ny, max_escape_time = 1000, impl_type = "numpy", plot_filename = None):
 	if (impl_type == "python"):
 		escape_iter_array = mpy.mb_python(xmin, xmax, ymin, ymax, Nx, Ny, max_escape_time)
 	elif (impl_type == "numpy"):
@@ -17,4 +17,4 @@ def compute_mandelbrot(xmin, xmax, ymin, ymax, Nx, Ny, max_escape_time = 1000, i
 		escape_iter_array = msw.mb_swig(xmin, xmax, ymin, ymax, Nx, Ny, max_escape_time, Nx * Ny)
 		escape_iter_array = np.reshape(escape_iter_array, (Nx, Ny))
 
-	return escape_iter_array
+	return np.asarray(escape_iter_array)

@@ -1,7 +1,7 @@
 
 from matplotlib import pyplot as plt
 
-def visualize_mb(escape_iter_array, x_min, x_max, y_min, y_max, width, height, max_escape_iter, filename):
+def visualize_mb(escape_iter_array, x_min, x_max, y_min, y_max, width, height, max_escape_iter, filename = None):
     """Function that takes in a list/array of escape times for the mandelbrot computations and creates an image
     giving a visual representation of the mandelbrot set. Here the coloring is such that each gridpoints is given
     a RGB (list with 3 values) value that depends on the number of iterations before exceeding 2 in absolute value.
@@ -28,8 +28,9 @@ def visualize_mb(escape_iter_array, x_min, x_max, y_min, y_max, width, height, m
                 image_array[i][j]  = [20 * norm_iter, 20 * norm_iter, 20 * norm_iter]   # Assign a RGB value to point depending on the escape time
 
     plt.imshow(image_array, extent = [x_min, x_max, y_min, y_max])      # Use imshow()-function to display the escape time RGB array
-    if (filename is not None):
-        plt.savefig(filename)
+
+    if (filename is not None):      # If filename is specified by user
+        plt.savefig(filename)       # Save image to file specified in call
         print("\nImage saved!\n")
 
     plt.show()                                                          # Make plot stay on screen
