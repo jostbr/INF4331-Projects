@@ -1,4 +1,13 @@
 
+"""Installation script (using distutils) for Package MandelbrotPkg. Comment on usage:
+- To install this package in the current directory, run this setup.py (while having MandelbrotPkg in
+  the same directory) with the following two commands. This will compile and link the cython and swig
+  version and make them vailable modules in the package. It will also make the pure python files
+  mandelbort_1.py, mandelbrot_2.py, visualize_mandelbrot.py and compute.py available modules.
+
+  > python setup.py build_ext
+  > python setup.py install --install-platlib=.
+"""
 from distutils.core import setup, Extension
 from Cython.Distutils import build_ext
 import numpy

@@ -15,6 +15,7 @@ def visualize_mb(escape_iter_array, x_min, x_max, y_min, y_max, width, height, m
         width (int): The number of points in the grid in the x-direction
         height (int): The number of points in the grid in the y-direction
         max_escape_iter (int): Number of iterations to be carried out (on each point) before we conclude a point is in the M-set
+        filename (str): [Optional] Name of image file to which the plot will be saved (if not None)
     """
     image_array = [[[0.0 for k in range(3)] for j in range(width)] for i in range(height)]   # 3D-list to store RGB values for gridpoints
     
@@ -33,4 +34,4 @@ def visualize_mb(escape_iter_array, x_min, x_max, y_min, y_max, width, height, m
         plt.savefig(filename)       # Save image to file specified in call
         print("\nImage saved!\n")
 
-    plt.show()                                                          # Make plot stay on screen
+    plt.show()  # Make plot stay on screen

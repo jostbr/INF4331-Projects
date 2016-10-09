@@ -6,6 +6,10 @@ In both these tests we run them on all 4 different implementations to verify all
 How to run this script:
 > pyt.test test_mandelbrot.py
 
+When running this script the following output '2 passed in 22.47 seconds' was produced,
+indicating that the compute_mandelbrot function (and therefore the modules mandelbrot_1
+mandelbrot_2, mandelbrot_cython, madnelbrot_swig) work as expected for the two cases.
+
 Comment on interpretation of parts of exercise 4.6:
 Based on the formulation of the 2 tests that should be created, I interpretated this as making
 this test script and calling compute_mandelbrot() and assumed we were not supposed to integrate

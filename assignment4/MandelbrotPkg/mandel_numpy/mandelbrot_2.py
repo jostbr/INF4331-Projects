@@ -33,6 +33,7 @@ def mb_numpy(x_min, x_max, y_min, y_max, width, height, max_escape_iter = 1000):
     return escape_iter_array    # Return escape time array and exit function
 
 if (__name__ == "__main__"):
+    """Example of usage of the function above"""
     x_min = -2.5; x_max = 1; y_min = -1.0; y_max = 1.0;
     width = 200; height = 200; max_escape_iter = 1000;
 
@@ -40,5 +41,3 @@ if (__name__ == "__main__"):
     escape_iter_array = mb_numpy(x_min, x_max, y_min, y_max, width, height, max_escape_iter)
     time_stop = time.clock()
     print("Execution took {0:.2f} seconds".format(time_stop - time_start))
-
-    visualize_mandelbrot.visualize_mb(escape_iter_array, x_min, x_max, y_min, y_max, width, height, max_escape_iter)

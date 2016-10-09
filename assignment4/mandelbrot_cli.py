@@ -15,10 +15,12 @@ HOW TO RUN AND USE mandelbrot_cli.py:
     Run with no command line arguments to start a CLI-session and then follow the
     on-screen instructions to set up the mandelbrot computations with you preferred
     implementation and parameter values Here each step gives you help underways.
+
 > python mandelbrot_cli.py <implemenatation>
     Run with CLI-session with implementation type given on the command line. When
     doing this the CLI-session will skip the question about which implementation
     to use an instead use the one supplied on the command line
+
 > python mandelbrot_cli.py --help
     Run with command line argument --help to view this help message.
 -------------------------------------------------------------------------------------\n\n"""
@@ -26,7 +28,7 @@ HOW TO RUN AND USE mandelbrot_cli.py:
         """Defining attributes to store values of arguments needed for compute_mandelbrot().
         In self.arg_vals, values for arguments are stored and are also given default values."""
         self.args =["x_min", "x_max", "y_min", "y_max", "width", "height", "max_escape_iter", "filename"]
-        self.arg_vals = {"x_min": -2.5, "x_max": 1.5, "y_min": -1.0, "y_max": 1.0,
+        self.arg_vals = {"x_min": -2.25, "x_max": 1.0, "y_min": -1.25, "y_max": 1.25,
             "width": 200, "height": 200, "max_escape_iter": 1000, "filename": None}
         self.arg_help = {"x_min": "Minimum x-value for the wanted region", "x_max": "Maximum x-value for the wanted region",
             "y_min": "Minimum y-value for the wanted region", "y_max": "Maximum y-value for the wanted region",
@@ -109,14 +111,13 @@ if (__name__ == "__main__"):
 
         cli_session.get_parameters_from_user()  # Get parameters and update instance attributes
 
-        # Call compute_mandelbrot()-function with the parameters gotten from the user.
+        # Call compute_mandelbrot()-function with the parameters specified by the user.
         escape_iter_array = cm.compute_mandelbrot(cli_session.arg_vals["x_min"], cli_session.arg_vals["x_max"],
             cli_session.arg_vals["y_min"], cli_session.arg_vals["y_max"], cli_session.arg_vals["width"],
             cli_session.arg_vals["height"], cli_session.arg_vals["max_escape_iter"], cli_session.implementation,
             cli_session.arg_vals["filename"])
 
-        print(escape_iter_array)
-
+        # Call visualize_mb()-function to plot the escape times in the xy-plane
         vm.visualize_mb(escape_iter_array, cli_session.arg_vals["x_min"], cli_session.arg_vals["x_max"],
             cli_session.arg_vals["y_min"], cli_session.arg_vals["y_max"], cli_session.arg_vals["width"],
             cli_session.arg_vals["height"], cli_session.arg_vals["max_escape_iter"], cli_session.arg_vals["filename"])
