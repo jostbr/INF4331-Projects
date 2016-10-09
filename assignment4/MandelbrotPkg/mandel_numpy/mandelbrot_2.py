@@ -2,7 +2,6 @@
 import time
 import numpy as np
 from matplotlib import pyplot as plt
-from .. import visualize_mandelbrot
 
 def mb_numpy(x_min, x_max, y_min, y_max, width, height, max_escape_iter = 1000):
     """Function that computes the escape times (number of iterations of the sequence f_c(0),f_c(f_c(0)),..., where f_c(z) = z² + c,

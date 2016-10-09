@@ -2,7 +2,6 @@
 import time
 import numpy as np
 import mandelbrot_swig
-from .. import visualize_mandelbrot
 
 if (__name__ == "__main__"):
     """This script is only made for calling/testing mc_swig in mandelbrot_swig.c and was made according to he filename

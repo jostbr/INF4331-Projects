@@ -2,7 +2,6 @@
 import time
 import numpy as np
 import mandelbrot_cython
-from .. import visualize_mandelbrot
 
 if (__name__ == "__main__"):
     """This script is only made for calling/testing mb_cython in mandelbrot_cython.pyx
