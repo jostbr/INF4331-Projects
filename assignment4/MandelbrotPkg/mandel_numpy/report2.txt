@@ -1,0 +1,19 @@
+
+File with NumPy implementation: MandelbrotPkg/mandel_numpy/mandelbrot_2.py
+
+When comparing the runtime the following values for the parameters where used:
+x_min = -2.5, x_max = 1.0, y_min = -1.0, y_max = 1.0,
+width = 200, height = 200, max_escape_iter = 1000
+
+Runtime comparison:
+For the pure Python version (without any NumPy what so ever) we got a runtime, after repeated
+checking, of 4.31s. With the numpy version we got 0.38s. So we see a significant speedup where
+the NumPy version completes the task about 12 times as fast.  We get a confirmation that
+NumPy's vectorization really works well and is a lot faster than regular python. But this might
+not even be an application that shows of NumPy at its very fastest due to the fact that we
+couldn't vectorize the the loop that does iterations (computing elements of the sequence f(0),
+f(f(0)),... So NumPy might be even faster for applications where it is possible to vectorize
+every loop and purely depend on array operartions and NumPy's underlying C/Fortran.
+
+See report4.txt in MandelbrotPkg/mandel_swig/report4.txt for a table comparing runtimes for all
+four implementations.

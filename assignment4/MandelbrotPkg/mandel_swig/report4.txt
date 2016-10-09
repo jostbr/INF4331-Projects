@@ -1,0 +1,45 @@
+
+Files with SWIG implementation: MandelbrotPkg/mandel_swig/mandelbrot_swig.c,
+mandelbrot_swig.h, mandelbrot_swig.i
+
+When comparing the runtime the following values for the parameters where used:
+x_min = -2.5, x_max = 1.0, y_min = -1.0, y_max = 1.0,
+width = 200, height = 200, max_escape_iter = 1000
+
+Runtime comparison:
+By using SWIG we get a runtime of 0.04s consistently. This means 108 times faster than pure
+Python, 10 times faster than NumPy, and 1.25 times faster than Cython. Below is normalized table
+
+Pure Python - 1.000
+NumPy		- 0.088
+Cython		- 0.012
+SWIG 		- 0.009
+
+Here every runtime is divided by the pure Python runtime. With SWIG we get the lowest runtime of
+all implementations. Here pure C-code is written and then integrated with Python. This might be
+why we get a slight speedup compared to Cython. Cython's Python-like style might bring some drawbacks
+in terms of pure speed and since SWIG relies directly on actual C-code it seems to be a bit faster.
+It is interesting to see just how much faster C is. It is to be noted that in the SWIG implementation
+the escape time array is one-dimensional and then after exiting C we use NumPy to reshape the result
+to the standard 2D-array we get from all the other implementations. But this has probably not had a
+significant negative impact on runtime as the reshape operation performs fast.
+
+Comments on implementation preferance:
+Of all four implementations the the easiset to write was the pure python version. Here everything that
+happens is very intuitive and not too hard to follow. The NumPy version was a lot harder to write. The
+vectorized operations are far from as intuitve and require a lot more head-scratching. However the code
+is in fewer lines and so you can really do a lot of computations in few lines swith NumPy. With Cython
+you get Pythons comfortable syntax (which I found really appealing) combined with the speed of C. this
+was very nice, but one drawback I found with Cython is the mixture of Python and C defined types which
+caused some confusion, especially the correspondence between NumPy types and C. But I guess this would
+get better with experience. With SWIG the code was in pure C no the same confusion as with Cython, however
+the syntax is a bit more cumbersome and slow to write compared to Python. And a big part of the challenge
+with SWIG was seting up the correct header, interface and setup files. So this process was a lot less
+straight-forward comapred to the other implementations. Also changing the SWIG implementation seemed
+kind of uncomfortable especially if one were to change the arguments as you might need to add a lot of
+code and rule in the .i-interface file. And maybe even typemaps. Considering all said above, I find it
+really hard to find a clear preference as they have their posititve and negative sides. That being said,
+as this is a computational task we are doing, I would definetly go with one of the C-implementations
+(or maybe NumPy) becasue I very much appreciate the much higher speed they perform at.
+
+

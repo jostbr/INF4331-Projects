@@ -1,0 +1,20 @@
+
+File with Cython implementation: MandelbrotPkg/mandel_cython/mandelbrot_cython.pyx
+
+When comparing the runtime the following values for the parameters where used:
+x_min = -2.5, x_max = 1.0, y_min = -1.0, y_max = 1.0,
+width = 200, height = 200, max_escape_iter = 1000
+
+Runtime comparison:
+By using Cython we achive a runtime (with the same input) of 0.05s which is about
+86 times as fast as the pure Python implementation and about 8 times as fast as Numpy.
+So we see that this version performs extremely much faster than pure Python and
+significantly faster than NumPy. With Cython we get to take more direct advantage of
+C's fast loops and even the loop on each gridpoint (which we couldn't vectorize in 4.2)
+are computed in C. This combined with the use of all variables as C defined types and
+maybe numpy array passing from Cython to Python, provides good speed. Using list
+instead of NumPy array here might not have given the same amount of speedup (even though
+no NumPy vectorization is done).
+
+See report4.txt in MandelbrotPkg/mandel_swig/report4.txt for a table comparing runtimes for all
+four implementations.

@@ -18,6 +18,7 @@ def compute_mandelbrot(xmin, xmax, ymin, ymax, Nx, Ny, max_escape_time = 1000, i
         Nx (int): The number of points in the grid in the x-direction
         Ny (int): The number of points in the grid in the y-direction
         max_escape_time (int): Number of iterations to be carried out (on each point) before we conclude a point is in the M-set
+        impl_type (str): String specifying which of the four mandelbrot implementations to call
         filename (str): [Optional] Name of image file to which the plot will be saved (if not None)
 
     Returns:
@@ -36,7 +37,7 @@ def compute_mandelbrot(xmin, xmax, ymin, ymax, Nx, Ny, max_escape_time = 1000, i
 
     elif (impl_type == "swig"):
         escape_iter_array = msw.mb_swig(xmin, xmax, ymin, ymax, Nx, Ny, max_escape_time, Nx * Ny)
-        escape_iter_array = np.reshape(escape_iter_array, (Nx, Ny))
+        escape_iter_array = np.reshape(escape_iter_array, (Nx, Ny))     # reshape 1D- into 2D-array.
 
     else:
         print("Error: Invalid implementation type. Valids are: python - numpy - cython - swig")
