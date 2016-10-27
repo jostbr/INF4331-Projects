@@ -36,22 +36,22 @@ def handle_input(cmd_line_args):
     return syntax_filename, theme_filename, source_filename
 
 def get_regex_dict(syntax_filename):
-    # Add more regex functionality for splitting current_line and for removing "
     regex_dict = dict()
     with open(syntax_filename, "r") as syntax_file:
         for line_num, current_line in enumerate(syntax_file):
-            regex, name = tuple([element.strip() for element in current_line.split(": ")])
-            regex_dict[name] = regex.replace('"', "")
+            regex = ":".join(current_line.split(":")[:-1])[1:-1]
+            syntax_type = current_line.split(":")[-1].strip()
+            regex_dict[syntax_type] = regex
 
     return regex_dict
 
 def get_color_dict(theme_filename):
-    # Add more regex functionality for splitting current_line
     color_dict = dict()
     with open(theme_filename, "r") as theme_file:
         for line_num, current_line in enumerate(theme_file):
-            name, color_code = tuple([element.strip() for element in current_line.split(": ")])
-            color_dict[name] = color_code
+            color_code = current_line.split(":")[-1].strip()
+            syntax_type = current_line.split(":")[0].strip()
+            color_dict[syntax_type] = color_code
 
     return color_dict
 
@@ -60,19 +60,18 @@ def color_source(source_filename, regex_dict, color_dict):
     end_color = "\033[0m"
 
     with open(source_filename, "r") as source_file:
-        for line_num, current_line in enumerate(source_file):
-            match_object = re.search(regex_dict["comment"], current_line)
-            if (match_object is not None):
-                if (line_num != 4):
-                    print(current_line.replace(match_object.group(0) + "\n", "") + start_color.format(color_dict["comment"]) + match_object.group(0) + end_color)
-                else:
-                    print(current_line.replace(match_object.group(0), "") + start_color.format(color_dict["comment"]) + match_object.group(0) + end_color)
+        source_code = source_file.read()
 
+    for syntax_type, regex in regex_dict.items():
+        repl = start_color.format(color_dict[syntax_type]) + r"\1" + end_color
+        source_code = re.sub(r"(" + regex + r")", repl, source_code)
+
+    print(source_code)
 
 if (__name__ == "__main__"):
     syntax_fn, theme_fn, source_fn = handle_input(sys.argv[1:])
     regex_dict = get_regex_dict(syntax_fn)
-    #print(regex_dict)
+    print(regex_dict)
     color_dict = get_color_dict(theme_fn)
-    #print(color_dict)
+    print(color_dict)
     color_source(source_fn, regex_dict, color_dict)
