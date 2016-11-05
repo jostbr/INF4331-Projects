@@ -1,0 +1,20 @@
+"//.*(?:$|\n)": single comment
+"/\*(?:.|\n)*\*/": multiline comment
+"# *include(?= *.*<.*>.*)": include
+"<.*>": include end
+"^\w+ *\w+ *\([^\n]+\)(?= *{| *\n *{)": function definition
+"(?<!return)\w+\** +[\w\.\[\]]+(?= *; *\n)": variable declaration
+"(\w+\**)? +[\w\.\[\]]+ *(?<!=)=(?!=)": variable assignment
+"\'.*\'(?![^n]+?{ *\n)": string single
+"\".*\"(?![^n]+?{ *\n)": string double
+"(?<!else )if *\([^\n]+\)(?= *{| *\n *{)": if
+"else if *\([^\n]+?\)(?= *{| *\n *{)": else if
+"else(?= *{| *\n *{)": else
+"for *\([^\n]+\)(?= *{| *\n *{)": for
+"while *\([^\n]+\)(?= *{| *\n *{)": while
+"(?<!\w)true(?!\w)(?![^n]+?{ *\n)": true
+"(?<!\w)false(?!\w)(?![^n]+?{ *\n)": false
+"(?<!\w)NULL(?!\w)(?![^n]+?{ *\n)": null
+"(?<!\w)break(?!\w)": break
+"(?<!\w)continue(?!\w)": continue
+"(?<!\w)return(?!\w)": return

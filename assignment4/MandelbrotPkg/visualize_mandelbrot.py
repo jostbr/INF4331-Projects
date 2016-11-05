@@ -26,7 +26,7 @@ def visualize_mb(escape_iter_array, x_min, x_max, y_min, y_max, width, height, m
 
             else:                                               # If current point not inside the M-set
                 norm_iter = escape_iter_array[i][j] / max_escape_iter                   # Normalize escape time to give value in [0, 1]
-                image_array[i][j]  = [20 * norm_iter, 20 * norm_iter, 20 * norm_iter]   # Assign a RGB value to point depending on the escape time
+                image_array[i][j]  = [70 * norm_iter, 0 * norm_iter, 2000 * norm_iter ** 2]   # Assign a RGB value to point depending on the escape time
 
     plt.imshow(image_array, extent = [x_min, x_max, y_min, y_max])      # Use imshow()-function to display the escape time RGB array
 

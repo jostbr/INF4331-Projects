@@ -1,0 +1,24 @@
+"#.*(?:$|\n)": comment
+"(?:from [\w\.]+ )?import [\w\., ]+(?: as \w+)?": import
+"class +[^:]+:": class definition
+"def +[^:]+:": function definition
+"[\w\.\[\]]+ *(?<!=)=(?!=)(?!.+?:.*?\n)": variable assignment
+"(?<!\")\"(?!\").*(?<!\")\"(?!\")(?!.+?:.*?\n)": string double
+"(?<!\')\'(?!\').*(?<!\')\'(?!\')(?!.+?:.*?\n)": string single
+"\"\"\"(?:.|\n)*\"\"\"(?!.+?:.*?\n)": multiline string double
+"\'\'\'(?:.|\n)*\'\'\'(?!.+?:.*?\n)": multiline string single
+"(?<!el)if [^:]+:": if
+"elif [^:]+:": elif
+"else *:": else
+"for [^:]+:": for
+"while [^:]+:": while
+"try *:": try
+"except [^:]+:": except
+"with [^:]+:": with
+"(?<!\w)True(?!\w)(?!.+?:.*?\n)": true
+"(?<!\w)False(?!\w)(?!.+?:.*?\n)": false
+"(?<!\w)None(?!\w)(?!.+?:.*?\n)": none
+"(?<!\w)break(?!\w)": break
+"(?<!\w)continue(?!\w)": continue
+"(?<!\w)pass(?!\w)": pass
+"(?<!\w)return(?!\w)": return

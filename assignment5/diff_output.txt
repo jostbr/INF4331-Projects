@@ -1,0 +1,12 @@
+0  Heey! This is a line that wont be modified.
+-  This line will be deleted,
++  Here we added a new line
+0  but this one will stay the same.
+0  Furthermore, we want to keep this line
+0  as well as this one,
+-  but definetly not thiss horribleee one,
++  Here we replaced the horrible line with this good one.
+-  and ths one is so bad tht it's embrrsing if we sont delet it
++  and the worst line of the file is now replaced by, arguably, the best
++  And finally we decided to add this line
++  in addition to this one. This file is two lines longer than the original.

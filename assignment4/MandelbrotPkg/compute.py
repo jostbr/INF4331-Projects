@@ -43,6 +43,6 @@ def compute_mandelbrot(xmin, xmax, ymin, ymax, Nx, Ny, max_escape_time = 1000, i
         print("Error: Invalid implementation type. Valids are: python - numpy - cython - swig")
 
     time_end = time.clock()     # Final time after execution of implementation impl_type
-    print("\nExecution with {0}-implementation took {1:.2f} seconds".format(impl_type, time_end - time_start))
+    print("Execution with {0}-implementation took {1:.2f} seconds".format(impl_type, time_end - time_start))
 
     return np.asarray(escape_iter_array)

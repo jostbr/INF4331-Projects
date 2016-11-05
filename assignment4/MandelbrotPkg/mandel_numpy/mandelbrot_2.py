@@ -41,3 +41,4 @@ if (__name__ == "__main__"):
     escape_iter_array = mb_numpy(x_min, x_max, y_min, y_max, width, height, max_escape_iter)
     time_stop = time.clock()
     print("Execution took {0:.2f} seconds".format(time_stop - time_start))
+0.34,0.43,0.40,0.55

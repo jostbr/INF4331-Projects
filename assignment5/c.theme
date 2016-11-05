@@ -1,0 +1,20 @@
+single comment: 0;90
+multiline comment: 0;90
+include: 0;31
+include end: 0;33
+function definition: 0;96
+variable assignment: 0;32
+variable declaration: 0;32
+string single: 0;93
+string double: 0;93
+if: 0;94
+else if: 0;94
+else: 0;94
+for: 0;94
+while: 0;94
+true: 0;95
+false: 0;95
+null: 0;91
+break: 0;91
+continue: 0;91
+return: 0;91

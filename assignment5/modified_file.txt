@@ -1,0 +1,9 @@
+Heey! This is a line that wont be modified.
+Here we added a new line
+but this one will stay the same.
+Furthermore, we want to keep this line
+as well as this one,
+Here we replaced the horrible line with this good one.
+and the worst line of the file is now replaced by, arguably, the best
+And finally we decided to add this line
+in addition to this one. This file is two lines longer than the original.

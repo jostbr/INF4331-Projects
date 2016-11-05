@@ -1,0 +1,24 @@
+comment: 0;90
+import: 0;36
+class definition: 0;94
+function definition: 0;92
+variable assignment: 0;94
+string double: 0;93
+string single: 0;93
+multiline string double: 0;93
+multiline string single: 0;93
+if: 0;95
+elif: 0;95
+else: 0;95
+for: 0;96
+while: 0;96
+try: 0;91
+except: 0;91
+with: 0;91
+true: 0;31
+false: 0;31
+none: 0;31
+break: 0;31
+continue: 0;31
+pass: 0;31
+return: 0;31

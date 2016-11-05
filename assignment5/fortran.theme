@@ -1,0 +1,21 @@
+program: 0;91
+implicit none: 0;91
+single comment: 0;90
+variabel type: 0;94
+variable assignment: 0;95
+variabel declaration (no assignment): 0;95
+string single: 0;93
+string double: 0;93
+if: 0;92
+else if: 0;92
+else: 0;92
+end if: 0;92
+do: 0;91
+do while: 0;91
+end do: 0;91
+true: 0;96
+false: 0;96
+null: 0;96
+exit: 0;91
+cycle: 0;91
+call: 0;91

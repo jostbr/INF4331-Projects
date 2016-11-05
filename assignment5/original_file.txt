@@ -1,0 +1,7 @@
+Heey! This is a line that wont be modified.
+This line will be deleted,
+but this one will stay the same.
+Furthermore, we want to keep this line
+as well as this one,
+but definetly not thiss horribleee one,
+and ths one is so bad tht it's embrrsing if we sont delet it

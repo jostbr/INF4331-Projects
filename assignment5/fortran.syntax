@@ -1,0 +1,20 @@
+"^(?:END|end)* *(?:PROGRAM|program)": program
+"(?:IMPLICIT *NONE|implicit none)": implicit none
+"!.*(?:$|\n)": single comment
+"\w+ *\w+(?=[^:\n]+::)": variabel type
+"(?<!do )[\w\.\[\]]+ *(?<!=)=(?!=)": variable assignment
+"\'.*\'": string single
+"\".*\"": string double
+"(?<!else)if[^\n]+then": if
+"else *if[^\n]+then": else if
+"else": else
+"end if": end if
+"do(?! *\d* *while) +[^\n]+": do
+"do +while[^\n]+": do while
+"end do": end do
+"(?<!\w)\.TRUE\.(?!\w)": true
+"(?<!\w)\.FALSE\.(?!\w)": false
+"(?<!\w)NULL(?!\w)(?![^n]+?{ *\n)": null
+"(?<!\w)exit(?!\w)": exit
+"(?<!\w)cycle(?!\w)": cycle
+"(?<!\w)(?:CALL|call)(?!\w)": call

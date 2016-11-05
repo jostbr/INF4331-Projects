@@ -28,8 +28,8 @@ HOW TO RUN AND USE mandelbrot_cli.py:
         """Defining attributes to store values of arguments needed for compute_mandelbrot().
         In self.arg_vals, values for arguments are stored and are also given default values."""
         self.args =["x_min", "x_max", "y_min", "y_max", "width", "height", "max_escape_iter", "filename"]
-        self.arg_vals = {"x_min": -2.5, "x_max": 1.0, "y_min": -1.0, "y_max": 1.0,
-            "width": 200, "height": 200, "max_escape_iter": 1000, "filename": None}
+        self.arg_vals = {"x_min": -2.25, "x_max": 1.0, "y_min": -1.25, "y_max": 1.25,
+            "width": 2000, "height": 2000, "max_escape_iter": 8000, "filename": None}
         self.arg_help = {"x_min": "Minimum x-value for the wanted region", "x_max": "Maximum x-value for the wanted region",
             "y_min": "Minimum y-value for the wanted region", "y_max": "Maximum y-value for the wanted region",
             "width": "Number of points in x-direction in region", "height": "Number of points in y-direction in region",
