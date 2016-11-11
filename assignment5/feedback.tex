@@ -1,0 +1,70 @@
+\documentclass[a4paper]{article}
+
+% Import some useful packages
+\usepackage[margin=0.5in]{geometry} % narrow margins
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\definecolor{LightGray}{gray}{0.95}
+
+\title{Peer-review of assignment 5 for \textit{INF3331-jostbr}}
+\author{Reviewer 1, chriswko, {chriswko@student.matnat.uio.no} \\
+ 		Reviewer 2, jorundfj, {jorundfj@student.matnat.uio.no}} 
+
+\begin{document}
+\maketitle
+
+
+
+\section{Review}\label{sec:review}
+
+python 3.4.2 Red hat 4.4.7 (ifi computer)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{General feedback}
+Would have liked to see a better handling of overlap cases, and a more compact regex. The assignment is solved as the assignment specified. Good use of docstrings and we appreciate the added ReadMe file and the example files to make it easy to test your code.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.1: Syntax highlighting}
+
+The highlighter is working as expected and it's easy to figure out how the input arguments are supposed to look with the help of the help command.
+
+\vspace{5mm}
+
+\noindent The code is very well documented which makes it easy to read and understand. Good variable names and overall structure, not much to complain about here. Would have liked a way to deal with overlapping as strings gets canceled and doesnt finish highlighting if there's another regex in the middle of it, same happens with comments. To handle this you could save the indexes of the regexes with the help of re.finditer and use these to insert the formatting. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.2: Python syntax} \label{sec:assignment5.2}
+
+The regex seems a bit unnecessarily  complicated, you don't need to add 3 different regexes for ifs for example. Other than that your regexes seem to work as intended and even if you added some of them together there are enough to fill the quota.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.3: Syntax for your favorite language}
+C
+
+\vspace{5mm}
+
+\noindent There are a lot of errors in the highlighting here, but it looks like the fault lies mainly with the highlighter itself and not the regexes you made. Overlap is handled poorly and it creates a lot of errors in the highlighting.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.4: Syntax for your second favorite language}
+fortran
+
+\vspace{5mm}
+
+\noindent The regex seems to work fine and you highlight a lot of the syntax. We have never used fortran so we're not quite sure what's important to highlight, but the things you added works so we're satisfied.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.5: superdiff}
+
+Well documented and structured code. It works as expected and we liked that it writes out with colors directly. Would have liked a different color choice for non modified lines as it's hard to read on a white terminal. Easy to understand variable names and not an overly complicated code. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.6:  Coloring diff}
+Everything works here, not much to say.
+
+\bibliographystyle{plain}
+\bibliography{literature}
+
+\end{document}
