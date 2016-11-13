@@ -12,7 +12,8 @@
 
 \title{Peer-review of assignment 5 for \textit{INF3331-jostbr}}
 \author{Reviewer 1, chriswko, {chriswko@student.matnat.uio.no} \\
- 		Reviewer 2, jorundfj, {jorundfj@student.matnat.uio.no}} 
+ 		Reviewer 2, jorundfj, {jorundfj@student.matnat.uio.no} \\
+        Reviewer 3, danielosen {danieleo@student.matnat.uio.no}} 
 
 \begin{document}
 \maketitle
@@ -37,7 +38,13 @@ The highlighter is working as expected and it's easy to figure out how the input
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Assignment 5.2: Python syntax} \label{sec:assignment5.2}
 
-The regex seems a bit unnecessarily  complicated, you don't need to add 3 different regexes for ifs for example. Other than that your regexes seem to work as intended and even if you added some of them together there are enough to fill the quota.
+The regex seems a bit unnecessarily  complicated, you don't need to add 3 different regexes for ifs for example (such corner cases are usually solved by making a more robust algorithm for the highlighter). Other than that your regexes seem to work as intended and even if you added some of them together there are enough to fill the quota. There are no specific colors for arithmetic operators "+/-*=", and no numbers (integers, floats or scientific), and there are several cases where your regex expressions do not appear to produce expected behaviour such as:
+\begin{itemize}
+\item coloring "if" in "if(" (appear to be assuming there is whitespace right after f character)
+\item coloring "except" in "except:" (appear to be assuming there is whitespace right after t character)
+\item coloring certain cases where one is using assignments with strings (overlapping as mentioned above)
+\item coloring multiple assignments (tuples) " var1,var2 = "string1","string2" "
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Assignment 5.3: Syntax for your favorite language}
@@ -45,7 +52,21 @@ C
 
 \vspace{5mm}
 
-\noindent There are a lot of errors in the highlighting here, but it looks like the fault lies mainly with the highlighter itself and not the regexes you made. Overlap is handled poorly and it creates a lot of errors in the highlighting.
+\noindent There are a lot of errors in the highlighting here, but it looks like the fault lies mainly with the highlighter itself and not the regexes you made. Overlap is handled poorly and it creates a lot of errors in the highlighting. 
+\\\\
+Like before, it would be nice to have regex for numbers, logical- and arithmetic operators. However, more important are keywords in C such as types (int,float,enum,void,char,vector,string) and type modifiers (long,double,short), access modifiers (private, public, const, virtual) and reference types ($\&$ address, * pointers) as these are fairly important in languages such as C.
+\\\\
+Understanding some of your regular expressions is difficult, to say the least (though this is somewhat expected because regex is not really suitable for this task), but testing them on sites such as regex101.com might be useful to you (if you haven't already done so). Since there are so many cases with errors, let's only look at one (with very simple code).
+\begin{align*}
+&\  \mathtt{int \ main()\{}\\
+&\ \quad \mathtt{return \ 0;}\\
+&\mathtt{\}}
+\end{align*}
+Your regular expression for catching function definitions like this simply does not work. Presumably you would want to capture the "main" part. To do something like this you might try to capture lines of the following grammatical structure: 
+\\\\
+\textit{"type modifier/access" "type" "scope/membership" "functioname" "(args)" "\{"}. 
+\\\\
+If you take advantage of group capturing, this will be relatively straightforward (you ignore anything but the last group, which you design to contain the function name). What has to be considered is of course that this expression is fairly general, and a lot of times several of the grammatical components will be missing. In this case, taking advantage of the syntax rules of C is very beneficial, because it gives you exactly what is valid to write in these cases. It might be a lot of work to consider all the possible combinations though. The general idea is that you want to make sure at least a "type" is there followed somewhere along the line with "functioname" "(" "anything" ")" and finally "\{", where you require "type" so you dont accidentally color "for(...)" expressions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Assignment 5.4: Syntax for your second favorite language}
