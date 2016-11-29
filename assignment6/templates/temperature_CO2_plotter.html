@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module temperature_CO2_plotter</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>temperature_CO2_plotter</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/cyclone/Documents/INF4331/INF3331-jostbr/assignment6/temperature_CO2_plotter.py">/home/cyclone/Documents/INF4331/INF3331-jostbr/assignment6/temperature_CO2_plotter.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="pandas.html">pandas</a><br>
+<a href="matplotlib.pyplot.html">matplotlib.pyplot</a><br>
+</td><td width="25%" valign=top><a href="seaborn.html">seaborn</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="temperature_CO2_plotter.html#Climate">Climate</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Climate">class <strong>Climate</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;that&nbsp;handles&nbsp;data&nbsp;analysis&nbsp;and&nbsp;plotting&nbsp;of&nbsp;temperature,&nbsp;CO2&nbsp;and<br>
+CO2-by-country&nbsp;data&nbsp;given&nbsp;in&nbsp;the&nbsp;form&nbsp;of&nbsp;*.csv-files&nbsp;to&nbsp;the&nbsp;constructor.<br>
+&nbsp;<br>
+Example&nbsp;usage:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;climate&nbsp;=&nbsp;<a href="#Climate">Climate</a>("temperature.csv",&nbsp;"co2.csv",&nbsp;"CO2_by_country.csv")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;climate.<a href="#Climate-plot_temperature">plot_temperature</a>("January",&nbsp;1816,&nbsp;2012,&nbsp;-5.4,&nbsp;1.0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;climate.<a href="#Climate-plot_CO2">plot_CO2</a>(1751,&nbsp;2012,&nbsp;0,&nbsp;10000)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;climate.<a href="#Climate-plot_CO2_by_country">plot_CO2_by_country</a>(2010,&nbsp;10.0,&nbsp;30.0)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Climate-__init__"><strong>__init__</strong></a>(self, temperature_filename, CO2_filename, CO2_by_country_filename)</dt><dd><tt>Constructor&nbsp;function&nbsp;that&nbsp;stores&nbsp;input&nbsp;filenames&nbsp;as&nbsp;well&nbsp;as&nbsp;doing<br>
+a&nbsp;global&nbsp;setup&nbsp;(applies&nbsp;to&nbsp;all&nbsp;plots)&nbsp;for&nbsp;some&nbsp;matplolib-parameters<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;temperature_filename&nbsp;(str)&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Filename&nbsp;for&nbsp;temperature&nbsp;csv-file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;CO2_filename&nbsp;(str)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Filename&nbsp;for&nbsp;CO2&nbsp;csv-file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;CO2_by_country_filename&nbsp;(str)&nbsp;:&nbsp;Filename&nbsp;for&nbsp;CO2-by-country&nbsp;csv-file</tt></dd></dl>
+
+<dl><dt><a name="Climate-plot_CO2"><strong>plot_CO2</strong></a>(self, start_year, end_year, y_min, y_max)</dt><dd><tt>Method&nbsp;that&nbsp;imports&nbsp;data&nbsp;from&nbsp;the&nbsp;self.<strong>CO2_filename</strong>&nbsp;csv-file<br>
+(using&nbsp;pandas&nbsp;module)&nbsp;and&nbsp;then,&nbsp;based&nbsp;on&nbsp;input&nbsp;arguments&nbsp;(i.e.<br>
+time&nbsp;range,&nbsp;y_min,&nbsp;etc.),&nbsp;generates&nbsp;an&nbsp;appropriate&nbsp;plot&nbsp;of&nbsp;the&nbsp;data.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;start_year&nbsp;(int)&nbsp;:&nbsp;First&nbsp;year&nbsp;to&nbsp;plot&nbsp;CO2&nbsp;emissions&nbsp;for<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end_year&nbsp;(int)&nbsp;&nbsp;&nbsp;:&nbsp;Final&nbsp;year&nbsp;to&nbsp;plot&nbsp;CO2&nbsp;emissions&nbsp;for<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y_min&nbsp;(float)&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Minimum&nbsp;value&nbsp;on&nbsp;the&nbsp;y-axis&nbsp;in&nbsp;the&nbsp;plot<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y_max&nbsp;(float)&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Maximum&nbsp;value&nbsp;on&nbsp;the&nbsp;y-axis&nbsp;in&nbsp;the&nbsp;plot</tt></dd></dl>
+
+<dl><dt><a name="Climate-plot_CO2_by_country"><strong>plot_CO2_by_country</strong></a>(self, year, lower_treshold, upper_treshold)</dt><dd><tt>Method&nbsp;that&nbsp;imports&nbsp;data&nbsp;from&nbsp;the&nbsp;self.<strong>CO2_filename</strong>&nbsp;csv-file<br>
+(using&nbsp;pandas&nbsp;module)&nbsp;and&nbsp;then,&nbsp;based&nbsp;on&nbsp;input&nbsp;arguments&nbsp;(i.e.<br>
+time&nbsp;range,&nbsp;y_min,&nbsp;etc.),&nbsp;generates&nbsp;an&nbsp;appropriate&nbsp;plot&nbsp;of&nbsp;the&nbsp;data.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;year&nbsp;(int)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;What&nbsp;year&nbsp;to&nbsp;plot&nbsp;CO2&nbsp;emissions&nbsp;for<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lower_threshold&nbsp;(float)&nbsp;:&nbsp;Countries&nbsp;above&nbsp;this&nbsp;emission&nbsp;threshold&nbsp;is&nbsp;plotted<br>
+&nbsp;&nbsp;&nbsp;&nbsp;upper_threshold&nbsp;(float)&nbsp;:&nbsp;Countries&nbsp;below&nbsp;this&nbsp;emission&nbsp;threshold&nbsp;is&nbsp;plotted</tt></dd></dl>
+
+<dl><dt><a name="Climate-plot_temperature"><strong>plot_temperature</strong></a>(self, month, start_year, end_year, y_min, y_max)</dt><dd><tt>Method&nbsp;that&nbsp;imports&nbsp;data&nbsp;from&nbsp;the&nbsp;self.<strong>temperature_filename</strong>&nbsp;csv-file<br>
+(using&nbsp;pandas&nbsp;module)&nbsp;and&nbsp;then,&nbsp;based&nbsp;on&nbsp;input&nbsp;arguments&nbsp;(i.e.&nbsp;correct<br>
+month,&nbsp;time&nbsp;range&nbsp;etc.),&nbsp;generates&nbsp;an&nbsp;appropriate&nbsp;plot&nbsp;of&nbsp;the&nbsp;data.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;month&nbsp;(str)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;String&nbsp;of&nbsp;month&nbsp;to&nbsp;plot&nbsp;temperature&nbsp;for<br>
+&nbsp;&nbsp;&nbsp;&nbsp;start_year&nbsp;(int)&nbsp;:&nbsp;First&nbsp;year&nbsp;to&nbsp;plot&nbsp;temperature&nbsp;for<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end_year&nbsp;(int)&nbsp;&nbsp;&nbsp;:&nbsp;Final&nbsp;year&nbsp;to&nbsp;plot&nbsp;temperature&nbsp;for<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y_min&nbsp;(float)&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Minimum&nbsp;value&nbsp;on&nbsp;the&nbsp;y-axis&nbsp;in&nbsp;the&nbsp;plot<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y_max&nbsp;(float)&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Maximum&nbsp;value&nbsp;on&nbsp;the&nbsp;y-axis&nbsp;in&nbsp;the&nbsp;plot</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

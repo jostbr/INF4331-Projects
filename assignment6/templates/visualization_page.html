@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<h1>Visualization of temperature and CO2 emission data</h1>
+<h3>Enter parameters in the right panels. Visit <a href="/help">help</a> to see documentation for the souce code</h3>
+
+<img src="/static/temperature.png" vspace=10></img>
+
+<div style="position: absolute; top: 170px; left: 1050px; width: 320px; height: 1230px; background-color: lightgrey;"">
+    <form action="/" method="POST">
+        <br>&nbsp;&nbsp;<b>Choose month &emsp; Start/end year</b><br><br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="January" checked>January &emsp; &emsp; &emsp; &nbsp;
+        &nbsp;&nbsp;<input type="text" name="syear temp" value="1816" maxlength="4" size="4"><br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="February">February &emsp; &emsp; &nbsp; &nbsp;
+        &nbsp;&nbsp;<input type="text" name="eyear temp" value="2012" maxlength="4" size="4"><br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="March">March <br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="April">April &emsp; &emsp; &emsp; &emsp; &nbsp; <b>ymin/ymax</b><br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="May">May<br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="June">June &emsp; &emsp; &emsp; &emsp; &nbsp;
+        &nbsp;&nbsp;<input type="text" name="ymin temp" value="-5.4" maxlength="4" size="4"><br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="July">July &emsp; &emsp; &emsp; &emsp; &nbsp; &nbsp;
+        &nbsp;&nbsp;<input type="text" name="ymax temp" value="1.0" maxlength="4" size="4"><br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="August">August<br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="September">September<br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="October">October<br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="November">November<br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="December">December
+        <br><br><br>
+        &nbsp;&nbsp;-----------------------------------------------------------
+        <br><br><br><br>
+        &nbsp;&nbsp;<b>Start/end year</b><br><br>
+        &nbsp;&nbsp;<input type="text" name="syear co2" value="1751" maxlength="4" size="4"><br>
+        &nbsp;&nbsp;<input type="text" name="eyear co2" value="2012" maxlength="4" size="4"><br><br>
+        &nbsp;&nbsp;<b>ymin/ymax</b><br><br>
+        &nbsp;&nbsp;<input type="text" name="ymin co2" value="0" maxlength="4" size="4"><br>
+        &nbsp;&nbsp;<input type="text" name="ymax co2" value="10000" maxlength="10" size="4">
+        <br><br><br><br><br><br><br><br><br>
+        &nbsp;&nbsp;-----------------------------------------------------------
+        <br><br><br><br><br>
+        &nbsp;&nbsp;<b>Lower/upper treshold for CO2 &nbsp;&nbsp;&nbsp;emissions</b><br><br>
+        &nbsp;&nbsp;<input type="text" name="ltreshold" value="10" maxlength="4" size="4"><br>
+        &nbsp;&nbsp;<input type="text" name="utreshold" value="30" maxlength="4" size="4"><br><br>
+        &nbsp;&nbsp;<b>Select year for analysis</b><br><br>
+        &nbsp;&nbsp;<input type="text" name="year" value="2010" maxlength="4" size="4"><br><br>
+        &nbsp;&nbsp;<input type="submit" value="Submit" style="width: 200px; height: 100px">
+    </form>
+</div>
+
+<div style="position: absolute; top: 530px; left: 1050px; width: 320px; height: 83px; background-color: white;""></div>
+<div style="position: absolute; top: 970px; left: 1050px; width: 320px; height: 85px; background-color: white;""></div>
+
+<img src='/static/co2.png' vspace=10></img><br>
+
+<img src='/static/CO2_by_country.png' vspace=10></img>
