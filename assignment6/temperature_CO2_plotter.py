@@ -175,6 +175,6 @@ if (__name__ == "__main__"):
     climate.plot_temperature("January", 1816, 2012, -5.4, 1.0)
     climate.plot_CO2(1751, 2012, 0, 10000)
     climate.plot_CO2_by_country(2010, 10.0, 30.0)
-    climate.plot_future("March", 1816, 2050)
+    climate.plot_future("February", 1816, 2150)
     plt.show()
 
