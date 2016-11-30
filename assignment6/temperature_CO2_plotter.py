@@ -15,6 +15,7 @@ class Climate(object):
         climate.plot_temperature("January", 1816, 2012, -5.4, 1.0)
         climate.plot_CO2(1751, 2012, 0, 10000)
         climate.plot_CO2_by_country(2010, 10.0, 30.0)
+        climate.plot_future("March", 1816, 2050)
     """
     def __init__(self, temperature_filename, CO2_filename, CO2_by_country_filename):
         """
@@ -111,7 +112,7 @@ class Climate(object):
         CO2_data = CO2_data[CO2_data[str(year)] <= upper_treshold]    # Filter out above treshold
 
         CO2_data.loc[:, str(year)].plot(kind = "bar")                   # Bar chart for a year
-        plt.title("CO$_2$ emission in {} for countries in interval [{}, {}]".format(
+        plt.title("CO$_2$ emissions in {} for countries in interval [{}, {}]".format(
             year, lower_treshold, upper_treshold), fontsize = 18)       # Generate title
         plt.ylabel("CO$_2$ emissions [tons per capita]", fontsize = 16) #Label on y-axis
 
@@ -132,18 +133,19 @@ class Climate(object):
         temp_data = pd.read_csv(self.temperature_filename, index_col = "Year")
         CO2_data = pd.read_csv(self.CO2_filename, index_col = "Year")
 
-        temp_data = temp_data.loc[start_year:, month]               # Extract relevant month temp
-        CO2_data = CO2_data.loc[start_year:, CO2_data.columns[0]]   # Ecstract all CO2 data
+        temp_data = temp_data.loc[start_year:, month]                # Extract relevant month temp
+        CO2_data = CO2_data.loc[start_year:, CO2_data.columns[0]]    # Ecstract all CO2 data
 
-        CO2_rate = CO2_data.index[-1] / CO2_data.index[-2]  # Constant CO2 increase rate
-        prev_temp = temp_data[temp_data.index[-1]]          # First prev_temp is in 2012
+        newest_year = temp_data.index[-1]
+        CO2_rate = CO2_data[newest_year] / CO2_data[newest_year - 1] # Constant CO2 increase rate
+        prev_temp = temp_data[newest_year]                           # First prev_temp is in 2012
 
-        future_temp = np.zeros((end_year - temp_data.index[-1]), dtype = np.float)  # Hold future
-        future_years = np.zeros((end_year - temp_data.index[-1]), dtype = np.int)   # Hold future
+        future_temp = np.zeros((end_year - newest_year), dtype = np.float)  # Hold future temp
+        future_years = np.zeros((end_year - newest_year), dtype = np.int)   # Hold future years
 
-        for i in range(end_year - 2012):
-            new_temp = prev_temp + abs(prev_temp) * (1.01 * CO2_rate - 1)  # Temp next year
-            future_years[i] = temp_data.index[-1] + (i + 1)                # Next year number
+        for i in range(end_year - newest_year):
+            new_temp = prev_temp + abs(prev_temp) * (CO2_rate - 1)         # Temp next year
+            future_years[i] = newest_year + (i + 1)                        # Next year number
             future_temp[i] = new_temp                                      # Store new temp
             prev_temp = new_temp                                           # update prev_temp
 
@@ -154,19 +156,25 @@ class Climate(object):
 
         # Plot historic data as well as predicted data and a separator.
         plt.Figure()     # New figure panel
+        plt.clf()        # Clear plot in case something there
         plt.hold("on")   # Keep plotting in the same panel
-        plt.plot(temp_data.loc[start_year:2012], linewidth = 2,
+        plt.plot(temp_data.loc[start_year:newest_year], linewidth = 2,
             color = (129.0 / 255, 63.0 / 255, 200.0 / 255))
-        plt.plot(temp_data.loc[2012:], linewidth = 2, color = "r")
-        plt.plot([2012, 2012], [min(temp_data.loc[:, 0]), max(temp_data.loc[:, 0])],
-            linewidth = 2, color = "black")
-        plt.axis([start_year, end_year, min(temp_data.loc[:, 0]), max(temp_data.loc[:, 0])]) 
+        plt.plot(temp_data.loc[newest_year:], linewidth = 2, color = "r")
+        plt.plot([newest_year, newest_year], [min(temp_data.loc[:, 0]),
+            max(temp_data.loc[:, 0])], linewidth = 2, linestyle = "--", color = "black")
+        plt.axis([start_year, end_year, min(temp_data.loc[:, 0]), max(temp_data.loc[:, 0])])
+        plt.title("Temperature in {} for {}-{}, anything past {} is a prediction".format(
+            month, start_year, end_year, newest_year), fontsize = 18)
+        plt.xlabel("Year", fontsize = 16)
+        plt.ylabel("Temperature [$^{\circ}C$]", fontsize = 16)
+        plt.savefig(os.path.join("static", "temperature_future.png"), bbox_inches = "tight")
 
 if (__name__ == "__main__"):
     climate = Climate("temperature.csv", "co2.csv", "CO2_by_country.csv")
-    #climate.plot_temperature("January", 1816, 2012, -5.4, 1.0)
-    #climate.plot_CO2(1751, 2012, 0, 10000)
-    #climate.plot_CO2_by_country(2010, 10.0, 30.0)
-    climate.plot_future("March", 1950, 2050, -5.4, 1.0)
+    climate.plot_temperature("January", 1816, 2012, -5.4, 1.0)
+    climate.plot_CO2(1751, 2012, 0, 10000)
+    climate.plot_CO2_by_country(2010, 10.0, 30.0)
+    climate.plot_future("March", 1816, 2050)
     plt.show()
 

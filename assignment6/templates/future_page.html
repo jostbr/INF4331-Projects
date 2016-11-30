@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<h1>Visualization of future predicition of temperature (very silly prediction)</h1>
+<h3>Enter parameters in the right panels. Go back to <a href="/">main page</a> for more plots or to <a href="/help">help</a> to see documentation for the souce code</h3>
+
+<img src="/static/temperature_future.png" vspace=10></img>
+
+<div style="position: absolute; top: 170px; left: 1050px; width: 320px; height: 470px; background-color: lightgrey;"">
+    <form action="/future" method="POST">
+        <br>&nbsp;&nbsp;<b>Choose month &emsp; Start/end year</b><br><br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="January">January &emsp; &emsp; &emsp; &nbsp;
+        &nbsp;&nbsp;<input type="text" name="start year" value="1816" maxlength="4" size="4"><br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="February" checked>February &emsp; &emsp; &nbsp; &nbsp;
+        &nbsp;&nbsp;<input type="text" name="end year" value="2150" maxlength="4" size="4"><br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="March">March<br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="April">April<br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="May">May<br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="June">June<br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="July">July<br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="August">August<br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="September">September<br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="October">October<br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="November">November<br>
+        &nbsp;&nbsp;<input type="radio" name="month" value="December">December<br><br>
+        &nbsp;&nbsp;<input type="submit" value="Submit" style="width: 200px; height: 100px">
+    </form>
+</div>

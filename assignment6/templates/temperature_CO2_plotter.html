@@ -51,7 +51,8 @@ Example&nbsp;usage:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;climate&nbsp;=&nbsp;<a href="#Climate">Climate</a>("temperature.csv",&nbsp;"co2.csv",&nbsp;"CO2_by_country.csv")<br>
 &nbsp;&nbsp;&nbsp;&nbsp;climate.<a href="#Climate-plot_temperature">plot_temperature</a>("January",&nbsp;1816,&nbsp;2012,&nbsp;-5.4,&nbsp;1.0)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;climate.<a href="#Climate-plot_CO2">plot_CO2</a>(1751,&nbsp;2012,&nbsp;0,&nbsp;10000)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;climate.<a href="#Climate-plot_CO2_by_country">plot_CO2_by_country</a>(2010,&nbsp;10.0,&nbsp;30.0)<br>&nbsp;</tt></td></tr>
+&nbsp;&nbsp;&nbsp;&nbsp;climate.<a href="#Climate-plot_CO2_by_country">plot_CO2_by_country</a>(2010,&nbsp;10.0,&nbsp;30.0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;climate.<a href="#Climate-plot_future">plot_future</a>("March",&nbsp;1816,&nbsp;2050)<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
 <dl><dt><a name="Climate-__init__"><strong>__init__</strong></a>(self, temperature_filename, CO2_filename, CO2_by_country_filename)</dt><dd><tt>Constructor&nbsp;function&nbsp;that&nbsp;stores&nbsp;input&nbsp;filenames&nbsp;as&nbsp;well&nbsp;as&nbsp;doing<br>
@@ -80,6 +81,15 @@ Args:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;year&nbsp;(int)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;What&nbsp;year&nbsp;to&nbsp;plot&nbsp;CO2&nbsp;emissions&nbsp;for<br>
 &nbsp;&nbsp;&nbsp;&nbsp;lower_threshold&nbsp;(float)&nbsp;:&nbsp;Countries&nbsp;above&nbsp;this&nbsp;emission&nbsp;threshold&nbsp;is&nbsp;plotted<br>
 &nbsp;&nbsp;&nbsp;&nbsp;upper_threshold&nbsp;(float)&nbsp;:&nbsp;Countries&nbsp;below&nbsp;this&nbsp;emission&nbsp;threshold&nbsp;is&nbsp;plotted</tt></dd></dl>
+
+<dl><dt><a name="Climate-plot_future"><strong>plot_future</strong></a>(self, month, start_year, end_year)</dt><dd><tt>Function&nbsp;that&nbsp;plots&nbsp;the&nbsp;historic&nbsp;temperetaure&nbsp;as&nbsp;well&nbsp;as&nbsp;the&nbsp;predicited<br>
+temperature&nbsp;for&nbsp;the&nbsp;future&nbsp;using&nbsp;a&nbsp;totally&nbsp;unrealistic&nbsp;correlation&nbsp;between<br>
+CO2&nbsp;emission&nbsp;rates&nbsp;and&nbsp;the&nbsp;evolution&nbsp;of&nbsp;the&nbsp;temperature.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;month&nbsp;(str)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;String&nbsp;of&nbsp;month&nbsp;to&nbsp;plot&nbsp;temperature&nbsp;for<br>
+&nbsp;&nbsp;&nbsp;&nbsp;start_year&nbsp;(int)&nbsp;:&nbsp;First&nbsp;year&nbsp;to&nbsp;plot&nbsp;temperature&nbsp;for<br>
+&nbsp;&nbsp;&nbsp;&nbsp;end_year&nbsp;(int)&nbsp;&nbsp;&nbsp;:&nbsp;Final&nbsp;(in&nbsp;future)&nbsp;year&nbsp;to&nbsp;plot&nbsp;temperature</tt></dd></dl>
 
 <dl><dt><a name="Climate-plot_temperature"><strong>plot_temperature</strong></a>(self, month, start_year, end_year, y_min, y_max)</dt><dd><tt>Method&nbsp;that&nbsp;imports&nbsp;data&nbsp;from&nbsp;the&nbsp;self.<strong>temperature_filename</strong>&nbsp;csv-file<br>
 (using&nbsp;pandas&nbsp;module)&nbsp;and&nbsp;then,&nbsp;based&nbsp;on&nbsp;input&nbsp;arguments&nbsp;(i.e.&nbsp;correct<br>
